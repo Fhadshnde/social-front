@@ -1,0 +1,117 @@
+/* الصفحة الرئيسية لإنشاء منشور */
+.create-post {
+    width: 100%;
+    height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* عنوان الصفحة */
+.create-post-title {
+    font-size: 30px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* فورم إنشاء المنشور */
+.create-post-form {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* المدخلات الرئيسية */
+.create-post-input,
+.create-post-textarea,
+.create-post-upload {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--gray-color);
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.create-post-input:focus,
+.create-post-textarea:focus,
+.create-post-upload:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* صندوق النصوص */
+.create-post-textarea {
+    resize: none;
+    min-height: 150px;
+}
+
+/* حقل تحميل الملفات */
+.create-post-upload {
+    background-color: var(--light-gray-color);
+    cursor: pointer;
+}
+
+/* زر إرسال النموذج */
+.create-post-btn {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white-color);
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.create-post-btn:hover {
+    background-color: var(--dark-primary-color);
+}
+
+/* الوسائط لتصغير حجم الشاشة */
+@media (max-width: 820px) {
+    .create-post-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .create-post-title {
+        font-size: 24px;
+    }
+
+    .create-post-input,
+    .create-post-textarea,
+    .create-post-upload {
+        font-size: 16px;
+    }
+
+    .create-post-btn {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-post-title {
+        font-size: 20px;
+    }
+
+    .create-post-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
