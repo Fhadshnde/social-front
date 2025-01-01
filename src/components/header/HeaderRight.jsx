@@ -27,7 +27,7 @@ const HeaderRight = () => {
               {user?.username}
             </span>
             <img
-              src={user?.profilePhoto.url}
+              src={`http://localhost:8000${user?.profilePhoto.url}`} // مسار الصورة
               alt="user photo"
               className="header-right-user-photo"
             />

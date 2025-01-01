@@ -11,7 +11,7 @@ const CreatePost = () => {
   const dispatch = useDispatch();
   const { loading, isPostCreated } = useSelector((state) => state.post);
   const { categories } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.auth); // الحصول على معرف المستخدم من حالة المصادقة
+  const { user } = useSelector((state) => state.auth);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,15 +24,14 @@ const CreatePost = () => {
     if (category.trim() === "") return toast.error("Post Category is required");
     if (description.trim() === "")
       return toast.error("Post Description is required");
+    if (!file) return toast.error("Post Image is required"); // تأكد من أن الصورة مطلوبة
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    formData.append("user", user._id); // إضافة معرف المستخدم إلى البيانات
-    if (file) {
-      formData.append("image", file);
-    }
+    formData.append("user", user._id); // إضافة معرف المستخدم
+    formData.append("image", file); // إضافة الصورة إلى FormData
 
     dispatch(createPost(formData));
   };
@@ -64,6 +63,7 @@ const CreatePost = () => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="create-post-input"
+          required
         >
           <option disabled value="">
             Select A Category
@@ -88,6 +88,7 @@ const CreatePost = () => {
           id="file"
           className="create-post-upload"
           onChange={(e) => setFile(e.target.files[0])}
+          required // تأكد من أن الحقل مطلوب
         />
         <button type="submit" className="create-post-btn">
           {loading ? (

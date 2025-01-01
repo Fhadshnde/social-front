@@ -87,8 +87,8 @@ const Profile = () => {
       <div className="profile-header">
         <div className="profile-image-wrapper">
           <img
-            src={file ? URL.createObjectURL(file) : profile?.profilePhoto?.url}
-            alt=""
+            src={file ? URL.createObjectURL(file) : `http://localhost:8000${profile?.profilePhoto?.url}`}
+            alt="Profile"
             className="profile-image"
           />
           {user?._id === profile?._id && (
