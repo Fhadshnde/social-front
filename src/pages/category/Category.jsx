@@ -14,7 +14,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(fetchPostsBasedOnCategory(category));
     window.scrollTo(0, 0);
-  }, [category]);
+  }, [dispatch, category]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
 
   return (
     <section className="category">

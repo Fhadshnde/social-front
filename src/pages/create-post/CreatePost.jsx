@@ -45,7 +45,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [dispatch]);
+  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
 
   return (
     <section className="create-post">

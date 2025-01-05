@@ -27,7 +27,7 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getUserProfile(id));
     window.scrollTo(0, 0);
-  }, [id, dispatch]);
+  }, [id, dispatch]); 
 
   const navigate = useNavigate();
   useEffect(() => {

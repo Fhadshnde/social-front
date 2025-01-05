@@ -11,7 +11,7 @@ const CommentsTable = () => {
 
   useEffect(() => {
     dispatch(fetchAllComments());
-  }, []);
+  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
 
   // Delete Comment Handler
   const deleteCommentHandler = (commentId) => {

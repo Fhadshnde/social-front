@@ -11,13 +11,12 @@ const ResetPassword = () => {
 
   useEffect(() => {
     const fetchResetPassword = async () => {
-      // محاكاة التحقق من صحة المستخدم والتوكن
       if (userId !== "validUserId" || token !== "validToken") {
         setIsError(true);
       }
     };
     fetchResetPassword();
-  }, [userId, token]);
+  }, [userId, token]); 
 
   // Form Submit Handler
   const formSubmitHandler = (e) => {
@@ -47,6 +46,7 @@ const ResetPassword = () => {
                 placeholder="Enter your new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required 
               />
             </div>
             <button className="form-btn" type="submit">

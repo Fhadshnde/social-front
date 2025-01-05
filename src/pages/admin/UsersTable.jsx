@@ -15,7 +15,7 @@ const UsersTable = () => {
 
   useEffect(() => {
     dispatch(getAllUsersProfile());
-  }, [isProfileDeleted]);
+  }, [dispatch, isProfileDeleted]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
 
   // Delete User Handler
   const deleteUserHandler = (userId) => {

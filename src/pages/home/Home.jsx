@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchPosts(1));
-  }, []);
+  }, [dispatch]); 
 
   return (
     <section className="home">

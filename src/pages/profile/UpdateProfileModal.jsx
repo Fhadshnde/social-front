@@ -54,7 +54,7 @@ const UpdateProfileModal = ({ setUpdateProfile, profile }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
-                    autoComplete="current-password" // أضف هذه الخاصية
+                    autoComplete="current-password" 
                 />
                 <button type="submit" className="update-profile-btn">
                     Update Profile
@@ -64,4 +64,4 @@ const UpdateProfileModal = ({ setUpdateProfile, profile }) => {
     );
 }
  
-export default UpdateProfileModal; // تأكد من تصدير الاسم الصحيح
+export default UpdateProfileModal;

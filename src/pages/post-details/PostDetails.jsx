@@ -27,7 +27,7 @@ const PostDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchSinglePost(id));
-  }, [id, dispatch]);
+  }, [id, dispatch]); 
 
   // Update Image Submit Handler
   const updateImageSubmitHandler = (e) => {

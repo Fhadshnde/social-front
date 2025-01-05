@@ -27,7 +27,7 @@ const UpdatePostModal = ({ setUpdatePost, post }) => {
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]); 
 
   return (
     <div className="update-post">

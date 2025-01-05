@@ -1,7 +1,7 @@
 import AdminSidebar from "./AdminSidebar";
 import "./admin-table.css";
 import swal from "sweetalert";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteCategory, fetchCategories } from "../../redux/apiCalls/categoryApiCall";
 
@@ -11,7 +11,7 @@ const CategoriesTable = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
 
   // Delete Category Handler
   const deleteCategoryHandler = (categoryId) => {

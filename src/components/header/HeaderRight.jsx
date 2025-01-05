@@ -28,7 +28,7 @@ const HeaderRight = () => {
             </span>
             <img
               src={`http://localhost:8000${user?.profilePhoto.url}`} // مسار الصورة
-              alt="user photo"
+              alt="user"
               className="header-right-user-photo"
             />
             {dropdown && (
