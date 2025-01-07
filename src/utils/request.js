@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const request = axios.create({
-    baseURL: "http://localhost:8000"
+    baseURL: "https://social-client-fahad.ddnsfree.com/"
 });
 
 export default request;
