@@ -7,7 +7,6 @@ const Sidebar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // محاكاة جلب الفئات
     setCategories(dummyCategories);
   }, []);
 
