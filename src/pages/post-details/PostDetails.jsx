@@ -11,33 +11,20 @@ import {
   deletePost,
   fetchSinglePost,
   toggleLikePost,
-  updatePostImage
 } from "../../redux/apiCalls/postApiCall";
 
 const PostDetails = () => {
+  const [updatePost, setUpdatePost] = useState(false); // تم إضافة تعريف المتغيرات
   const dispatch = useDispatch();
   const { post } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.auth);
 
   const { id } = useParams();
 
-  const [file, setFile] = useState(null);
-  const [updatePost, setUpdatePost] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchSinglePost(id));
-  }, [id, dispatch]); 
-
-  // Update Image Submit Handler
-  const updateImageSubmitHandler = (e) => {
-    e.preventDefault();
-    if (!file) return toast.warning("there is no file!");
-
-    const formData = new FormData();
-    formData.append("image", file);
-    dispatch(updatePostImage(formData, post?._id));
-  };
+  }, [id, dispatch]);
 
   const navigate = useNavigate();
 
@@ -60,34 +47,7 @@ const PostDetails = () => {
   return (
     <section className="post-details">
       <div className="post-details-image-wrapper">
-        {post?.image?.url ? (
-          <img
-            src={file ? URL.createObjectURL(file) : post.image.url}
-            alt=""
-            className="post-details-image"
-          />
-        ) : (
-          <div className="no-image-placeholder">No Image Available</div>
-        )}
-        {user?._id === post?.user?._id && (
-          <form
-            onSubmit={updateImageSubmitHandler}
-            className="update-post-image-form"
-          >
-            <label htmlFor="file" className="update-post-label">
-              <i className="bi bi-image-fill"></i>
-              Select new image
-            </label>
-            <input
-              style={{ display: "none" }}
-              type="file"
-              name="file"
-              id="file"
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-            <button type="submit">upload</button>
-          </form>
-        )}
+        <div className="no-image-placeholder">No Image Available</div>
       </div>
       <h1 className="post-details-title">{post?.title}</h1>
       <div className="post-details-user-info">
