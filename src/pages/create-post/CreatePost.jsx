@@ -16,36 +16,34 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [file, setFile] = useState(null);
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
     if (title.trim() === "") return toast.error("Post Title is required");
     if (category.trim() === "") return toast.error("Post Category is required");
     if (description.trim() === "")
       return toast.error("Post Description is required");
-    if (!file) return toast.error("Post Image is required"); // تأكد من أن الصورة مطلوبة
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("user", user._id); // إضافة معرف المستخدم
-    formData.append("image", file); // إضافة الصورة إلى FormData
+    const postData = {
+      title,
+      description,
+      category,
+      user: user._id,
+    };
 
-    dispatch(createPost(formData));
+    dispatch(createPost(postData)); // إرسال البيانات دون صورة
   };
 
   const navigate = useNavigate();
   useEffect(() => {
     if (isPostCreated) {
-      navigate("/");
+      navigate("/"); // الانتقال بعد نجاح الإنشاء
     }
   }, [isPostCreated, navigate]);
 
   useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
+    dispatch(fetchCategories()); // جلب الفئات عند تحميل الصفحة
+  }, [dispatch]);
 
   return (
     <section className="create-post">
@@ -82,14 +80,7 @@ const CreatePost = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
-        <input
-          type="file"
-          name="file"
-          id="file"
-          className="create-post-upload"
-          onChange={(e) => setFile(e.target.files[0])}
-          required // تأكد من أن الحقل مطلوب
-        />
+
         <button type="submit" className="create-post-btn">
           {loading ? (
             <RotatingLines
