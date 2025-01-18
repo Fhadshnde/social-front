@@ -2,8 +2,7 @@
 import axios from "axios";
 
 const request = axios.create({
-    baseURL: "https://social-api-fahad.gleeze.com/"
-
+    baseURL: "http://localhost:8001/"
 });
 
 export default request;

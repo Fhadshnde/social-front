@@ -9,10 +9,14 @@ import { fetchPosts } from "../../redux/apiCalls/postApiCall";
 const Home = () => {
   const dispatch = useDispatch();
   const { posts } = useSelector(state => state.post);
+  const { user } = useSelector((state) => state.auth);
 
+  // useEffect to fetch posts when user logs in
   useEffect(() => {
-    dispatch(fetchPosts(1));
-  }, [dispatch]); 
+    if (user) {
+      dispatch(fetchPosts(1));
+    }
+  }, [dispatch, user]);
 
   return (
     <section className="home">
@@ -22,15 +26,25 @@ const Home = () => {
         </div>
       </div>
       <div className="home-latest-post">Latest Posts</div>
-      <div className="home-container">
-        <PostList posts={posts} />
-        <Sidebar />
-      </div>
-      <div className="home-see-posts-link">
-        <Link to="/posts" className="home-link">
-          See All Posts
-        </Link>
-      </div>
+      {user ? (
+        <>
+          <div className="home-container">
+            <PostList posts={posts} />
+            <Sidebar />
+          </div>
+          <div className="home-see-posts-link">
+            <Link to="/posts" className="home-link">
+              See All Posts
+            </Link>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1>
+            You have to log in or create a new account to see all the content
+          </h1>
+        </>
+      )}
     </section>
   );
 };
