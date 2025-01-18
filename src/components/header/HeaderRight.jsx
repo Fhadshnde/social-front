@@ -13,7 +13,7 @@ const HeaderRight = () => {
   const logoutHandler = () => {
     setDropdown(false);
     dispatch(logoutUser());
-  }
+  };
 
   return (
     <div className="header-right">
@@ -24,13 +24,8 @@ const HeaderRight = () => {
               onClick={() => setDropdown((prev) => !prev)}
               className="header-right-username"
             >
-              {user?.username}
+              {user?.username || "Guest"}
             </span>
-            {/* <img
-              src={`https://social-api-fahad.gleeze.com${user?.profilePhoto.url}`} 
-              alt="user"
-              className="header-right-user-photo"
-            /> */}
             {dropdown && (
               <div className="header-right-dropdown">
                 <Link
