@@ -31,18 +31,18 @@ const CreatePost = () => {
       user: user._id,
     };
 
-    dispatch(createPost(postData)); // إرسال البيانات دون صورة
+    dispatch(createPost(postData)); 
   };
 
   const navigate = useNavigate();
   useEffect(() => {
     if (isPostCreated) {
-      navigate("/"); // الانتقال بعد نجاح الإنشاء
+      navigate("/"); 
     }
   }, [isPostCreated, navigate]);
 
   useEffect(() => {
-    dispatch(fetchCategories()); // جلب الفئات عند تحميل الصفحة
+    dispatch(fetchCategories()); 
   }, [dispatch]);
 
   return (

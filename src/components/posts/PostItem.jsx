@@ -7,7 +7,7 @@ const PostItem = ({ post, username, userId }) => {
     <div className="post-item">
       <div className="post-item-image-wrapper">
         {post?.image?.url ? (
-          <img src={`http://localhost:8000${post.image.url}`} alt="Post" className="post-item-image" />
+          <img src={`https://social-api-fahad.gleeze.com/${post.image.url}`} alt="Post" className="post-item-image" />
         ) : (
           <div className="no-image-placeholder">No Image Available</div>
         )}
