@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 const PostItem = ({ post, username, userId }) => {
-  const profileLink = userId ? `/profile/${userId}` : `/profile/${post?.user?._id}`;
+  // تحديد الرابط المناسب لملف الشخصي
+  const profileLink = userId ? `/profile/${userId}` : post?.user?._id ? `/profile/${post.user._id}` : "#";
 
   return (
     <div className="post-item">
@@ -17,25 +18,23 @@ const PostItem = ({ post, username, userId }) => {
           <div className="post-item-author">
             <strong>Author: </strong>
             <Link className="post-item-username" to={profileLink}>
-              {username ? username : post?.user.username}
+              {username || post?.user?.username || "Unknown User"}
             </Link>
           </div>
           <div className="post-item-date">
-            {new Date(post?.createdAt).toDateString()}
+            {post?.createdAt ? new Date(post.createdAt).toDateString() : "Unknown Date"}
           </div>
         </div>
         <div className="post-item-details">
-          <h4 className="post-item-title">{post?.title}</h4>
-          <Link className="post-item-category" to={`/posts/categories/${post?.category}`}>
-            {post?.category}
+          <h4 className="post-item-title">{post?.title || "Untitled Post"}</h4>
+          <Link className="post-item-category" to={post?.category ? `/posts/categories/${post.category}` : "#"}>
+            {post?.category || "Uncategorized"}
           </Link>
         </div>
         <p className="post-item-description">
-          {post?.description}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo hic assumenda necessitatibus in voluptatibus sapiente debitis. Perspiciatis, ipsam eos? Tempora dolorem itaque sed assumenda maiores iure animi et magnam quae!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo hic assumenda necessitatibus in voluptatibus sapiente debitis. Perspiciatis, ipsam eos? Tempora dolorem itaque sed assumenda maiores iure animi et magnam quae!
+          {post?.description || "No description available."}
         </p>
-        <Link className="post-item-link" to={`/posts/details/${post?._id}`}>
+        <Link className="post-item-link" to={post?._id ? `/posts/details/${post._id}` : "#"}>
           Read More...
         </Link>
       </div>
