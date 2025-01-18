@@ -26,11 +26,11 @@ const HeaderRight = () => {
             >
               {user?.username}
             </span>
-            <img
-              src={`http://localhost:8000${user?.profilePhoto.url}`} // مسار الصورة
+            {/* <img
+              src={`https://social-api-fahad.gleeze.com${user?.profilePhoto.url}`} 
               alt="user"
               className="header-right-user-photo"
-            />
+            /> */}
             {dropdown && (
               <div className="header-right-dropdown">
                 <Link

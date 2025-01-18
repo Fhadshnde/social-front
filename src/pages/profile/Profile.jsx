@@ -86,12 +86,12 @@ const Profile = () => {
     <section className="profile">
       <div className="profile-header">
         <div className="profile-image-wrapper">
-          <img
-            src={file ? URL.createObjectURL(file) : `http://localhost:8000${profile?.profilePhoto?.url}`}
+          {/* <img
+            src={file ? URL.createObjectURL(file) : `https://social-api-fahad.gleeze.com${profile?.profilePhoto?.url}`}
             alt="Profile"
             className="profile-image"
-          />
-          {user?._id === profile?._id && (
+          /> */}
+          {/* {user?._id === profile?._id && (
             <form onSubmit={formSubmitHandler}>
               <abbr title="choose profile photo">
                 <label
@@ -110,7 +110,7 @@ const Profile = () => {
                 Upload
               </button>
             </form>
-          )}
+          )} */}
         </div>
         <h1 className="profile-username">{profile?.username}</h1>
         <p className="profile-bio">{profile?.bio}</p>
