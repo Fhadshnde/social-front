@@ -20,8 +20,9 @@ const Register = () => {
         if(username.trim() === "") return toast.error("Username is required");
         if(email.trim() === "") return toast.error("Email is required");
         if(password.trim() === "") return toast.error("Password is required");
+        if(password.length < 8) return toast.error("Password must be at least 8 characters");
 
-        dispatch(registerUser({ username, email, password }))
+        dispatch(registerUser({ username, email, password }));
     }
 
     const navigate = useNavigate();
@@ -32,11 +33,10 @@ const Register = () => {
             icon: "success"
         }).then(isOk => {
             if(isOk) {
-            navigate("/login");
+                navigate("/login");
             }
         })
     }
-
 
     return ( 
         <section className="form-container">

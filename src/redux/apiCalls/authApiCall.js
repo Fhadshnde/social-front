@@ -36,7 +36,14 @@ export function registerUser(user) {
       dispatch(authActions.register(data.message));
     } catch (error) {
       console.error('Registration error:', error);
-      toast.error(error.response?.data?.message || "An unexpected error occurred. Please try again.");
+      const errorMessage = error.response?.data?.message || "An unexpected error occurred. Please try again.";
+      if (errorMessage === "Email already registered.") {
+        toast.error("Email is already registered. Please use another email.");
+      } else if (errorMessage.includes("username already exists")) {
+        toast.error("Username is already taken. Please choose another one.");
+      } else {
+        toast.error(errorMessage);
+      }
     }
   }
 }

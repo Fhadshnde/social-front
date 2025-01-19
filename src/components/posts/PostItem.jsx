@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const PostItem = ({ post, username, userId }) => {
-  // تحديد الرابط المناسب لملف الشخصي
   const profileLink = userId ? `/profile/${userId}` : post?.user?._id ? `/profile/${post.user._id}` : "#";
 
   return (

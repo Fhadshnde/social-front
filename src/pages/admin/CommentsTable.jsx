@@ -1,9 +1,12 @@
 import AdminSidebar from "./AdminSidebar";
 import "./admin-table.css";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deleteComment, fetchAllComments } from "../../redux/apiCalls/commentApiCall";
+import { fetchAllComments, deleteComment } from "../../redux/apiCalls/commentApiCall";
+
+
 
 const CommentsTable = () => {
   const dispatch = useDispatch();
@@ -11,7 +14,7 @@ const CommentsTable = () => {
 
   useEffect(() => {
     dispatch(fetchAllComments());
-  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
+  }, [dispatch]);
 
   // Delete Comment Handler
   const deleteCommentHandler = (commentId) => {
@@ -43,22 +46,15 @@ const CommentsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {comments.map((item,index) => (
+            {comments.map((item, index) => (
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <div className="table-image">
-                    <img
-                      src={item.user.profilePhoto?.url}
-                      alt=""
-                      className="table-user-image"
-                    />
-                    <span className="table-username">
-                      {item.user.username}
-                    </span>
-                  </div>
+                  <span className="table-username">
+                    {item?.user?.username || 'Unknown User'}
+                  </span>
                 </td>
-                <td>{item.text}</td>
+                <td>{item.comment}</td>
                 <td>
                   <div className="table-button-group">
                     <button onClick={() => deleteCommentHandler(item._id)}>
@@ -73,6 +69,6 @@ const CommentsTable = () => {
       </div>
     </section>
   );
-};
+}
 
 export default CommentsTable;

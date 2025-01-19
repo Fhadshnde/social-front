@@ -46,20 +46,9 @@ const PostDetails = () => {
 
   return (
     <section className="post-details">
-      <div className="post-details-image-wrapper">
-        <div className="no-image-placeholder">No Image Available</div>
-      </div>
       <h1 className="post-details-title">{post?.title}</h1>
+      <p className="post-details-description">{post?.description}</p>
       <div className="post-details-user-info">
-        {post?.user?.profilePhoto?.url ? (
-          <img
-            src={post.user.profilePhoto.url}
-            alt=""
-            className="post-details-user-image"
-          />
-        ) : (
-          <div className="no-image-placeholder">No Profile Photo</div>
-        )}
         <div className="post-details-user">
           <strong>
             <Link to={`/profile/${post?.user?._id}`}>{post?.user?.username}</Link>
@@ -67,7 +56,6 @@ const PostDetails = () => {
           <span>{new Date(post?.createdAt).toDateString()}</span>
         </div>
       </div>
-      <p className="post-details-description">{post?.description}</p>
       <div className="post-details-icon-wrapper">
         <div>
           {user && (

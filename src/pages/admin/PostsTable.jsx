@@ -12,7 +12,7 @@ const PostsTable = () => {
 
   useEffect(() => {
     dispatch(getAllPosts());
-  }, [dispatch]); // تم إضافة dispatch إلى مصفوفة الاعتماديات
+  }, [dispatch]);
 
   // Delete Post Handler
   const deletePostHandler = (postId) => {
@@ -48,16 +48,9 @@ const PostsTable = () => {
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <div className="table-image">
-                    <img
-                      src={item.user.profilePhoto?.url}
-                      alt=""
-                      className="table-user-image"
-                    />
-                    <span className="table-username">
-                      {item.user.username}
-                    </span>
-                  </div>
+                  <span className="table-username">
+                    {item?.user?.username || 'Unknown User'}
+                  </span>
                 </td>
                 <td>{item.title}</td>
                 <td>
